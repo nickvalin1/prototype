@@ -274,10 +274,10 @@ function displayOptionMenu() {
     }
 }
 function attackable() {
-    for (var i=0; i<enemyArray.length; i++) {
-        if (enemyArray[i]!=null) {
-            if ((player.tile.x==enemyArray[i].tile.x && Math.abs(player.tile.y-enemyArray[i].tile.y)==1) || (player.tile.y==enemyArray[i].tile.y && Math.abs(player.tile.x-enemyArray[i].tile.x)==1)) {
-                toAttack=enemyArray[i];
+    for (var ind=0; i<enemyArray.length; ind++) {
+        if (enemyArray[ind]!=null) {
+            if ((player.tile.x==enemyArray[ind].tile.x && Math.abs(player.tile.y-enemyArray[ind].tile.y)==1) || (player.tile.y==enemyArray[ind].tile.y && Math.abs(player.tile.x-enemyArray[ind].tile.x)==1)) {
+                toAttack=enemyArray[ind];
                 return true;
             }
         }
