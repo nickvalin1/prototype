@@ -21,6 +21,12 @@ var story1;
 var playText=true;
 var j=0;
 var continueButton1;
+var story2;
+var playText2=false;
+var k=0;
+var speakerText1;
+var speaker1;
+var speaker2;
 
 class Unit {
     constructor(name, health, strength, defense, speed, move, sprite, tile, arrayPosition) {
@@ -69,7 +75,7 @@ Assignment3.Level.prototype={
         
         this.input.onDown.add(getCurrentTile, this);
         
-        player= new Unit("Titan", 50, 15, 10, 15, 5, this.add.sprite(736,0,'dude'), map.getTileWorldXY(736,0), null);
+        player= new Unit("Titan", 50, 15, 10, 15, 10, this.add.sprite(736,0,'dude'), map.getTileWorldXY(736,0), null);
         var general= new Unit("General", 70, 15, 25, 5, 4, this.add.sprite(128-12, 224-10, 'general'), map.getTileWorldXY(128,224), null);
         general.sprite.scale.setTo(.4,.4);
         var knight1= new Unit("Knight1", 50, 8, 20, 3, 3, this.add.sprite(96-8, 192-2, 'knight'), map.getTileWorldXY(96,192), null);
@@ -107,8 +113,12 @@ Assignment3.Level.prototype={
         scroll1.scale.setTo(.6,.05);
         
         story1=["These guards... they've been slaughtered...", "Hey! There's another one, get him!", "Well, it looks like I'll be fighting my way to the Princess.", "Who could these men be..."];
+        speaker1=["Titan:", "???:", "Titan:", "Titan:"];
+        story2=["Janus! What's going on?", "Enceladus is under attack.", "Well I can see that, but who are they?", "Nevermind that now, you must do your duty.", "I can't just leave you here!", "You can and you will, we all have our roles to play.", "Good luck my friend.", "Hmmph... good luck General.", "You face General Janus of Enceladus.", "Turn back now if you value your lives.", "I'm afraid I cannot do that General.", "You see, my orders are to take the Princess.", "You won't be doing so while I live.", "That shouldn't be a problem General.", "Hmmph, we shall see."];
+        speaker2=["Titan:", "Janus:", "Titan:", "Janus:", "Titan:", "Janus:", "Titan:", "Janus:", "Janus:", "Janus:", "???:", "???:", "Janus:", "???:", "Janus:"];
         
         scrollText=this.add.text(145, 590, story1[j]);
+        speakerText1=this.add.text(50, 590, speaker1[j]);
         
         continueButton1=this.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
     },
@@ -120,17 +130,22 @@ Assignment3.Level.prototype={
             else if (click && continueButton1.isUp) {
                 j++;
                 scrollText.text=story1[j];
+                speakerText1.text=speaker1[j];
                 click=false;
             }
             if (continueButton1.isDown && j>=story1.length-1) {
                 scroll1.visible=false;
                 scrollText.visible=false;
+                speakerText1.visible=false;
                 click=false;
                 playText=false;
             }
         }
-        else {
-            if (click2 && this.input.mousePointer.isDown) {
+        else if (!playText2) {
+            if (player.tile.x<=6) {
+                playText2=true;
+            }
+            else if (click2 && this.input.mousePointer.isDown) {
                 if (isIn(currentTile)) {
                     moveTo(player, currentTile);
                     movementSelect.removeAll();
@@ -152,6 +167,28 @@ Assignment3.Level.prototype={
                         click=true;
                     }
                 }
+            }
+        }
+        else {
+            scroll1.visible=true;
+            scrollText.text=story2[k];
+            scrollText.visible=true;
+            speakerText1.text=speaker2[k];
+            speakerText1.visible=true;
+            if (continueButton1.isDown && k<story2.length && !click) {
+                click=true;
+            }
+            else if (click && continueButton1.isUp) {
+                k++;
+                scrollText.text=story2[k];
+                speakerText1.text=speaker2[k];
+                click=false;
+            }
+            if (continueButton1.isDown && k==7) {
+                player.sprite.destroy();
+            }
+            if (continueButton1.isDown && k<=story2.length-1) {
+                //this.state.start("Level2");
             }
         }
     }

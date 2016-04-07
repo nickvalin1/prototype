@@ -3,6 +3,8 @@ var background;
 var scroll;
 var story;
 var storyText;
+var speakerText;
+var speaker;
 var continueButton;
 var i=0;
 var click1=false;
@@ -18,9 +20,11 @@ Assignment3.Story.prototype={
         soldier.scale.setTo(-2,2);
         continueButton=this.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
         story=["Nice day isn't it?", "Hmmph.", "Aren't you ever happy?", "Not my job to be happy. Job's to protect the Princess.", "Don't you think Princess Rhea would feel safer if she didn't have to look at your frown all the time?", "...", "Not like she needs protection anyway, the whole country loves her.", "Princesses always need protection.", "Guahhh!!!", "What was that?", "Nothing good. You head to the throne room, I'll check the courtyard.", "Yes General."];
+        speaker=["Titan:", "Janus:", "Titan:", "Janus:", "Titan:", "Janus:", "Titan:", "Janus:", "???:", "Titan:", "Janus:", "Titan:", "Janus:"];
         storyText=this.add.text(145,530,story[i]);
         storyText.wordWrap=true;
         storyText.wordWrapWidth=600;
+        speakerText=this.add.text(50,530,speaker[i]);
     },
     update: function() {
         if (continueButton.isDown && i<story.length && !click1) {
@@ -29,6 +33,7 @@ Assignment3.Story.prototype={
         else if (click1 && continueButton.isUp) {
             i++;
             storyText.text=story[i];
+            speakerText.text=speaker[i];
             click1=false;
         }
         if (continueButton.isDown && i>=story.length-1) {
