@@ -1,4 +1,4 @@
-Assignment3.Level1=function(game){};
+Assignment3.Level=function(game){};
 var map; //tilemap
 var layer; //layer
 var player; //player unit
@@ -54,7 +54,7 @@ class Unit {
     } 
 }
 
-Assignment3.Level1.prototype={
+Assignment3.Level.prototype={
     create: function() {
         map=this.add.tilemap('level1');
         map.addTilesetImage('tileset');

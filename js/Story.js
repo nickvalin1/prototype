@@ -32,7 +32,7 @@ Assignment3.Story.prototype={
             click1=false;
         }
         if (continueButton.isDown && i>=story.length-1) {
-            this.state.start('Level1');
+            this.state.start('Level');
         }
     }
 }
