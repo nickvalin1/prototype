@@ -1,4 +1,3 @@
-var Assignment3={};
 Assignment3.Preloader=function(game) {
     this.game=game;
     this.ready=false;
