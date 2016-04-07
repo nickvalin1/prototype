@@ -13,9 +13,9 @@ window.onload = function() {
     // All loading functions will typically all be found inside "preload()".
     
     var game = new Phaser.Game( 949, 640, Phaser.AUTO, 'game');
-    game.state.add('Preloader', Assignment3.Preloader);
+    game.state.add('Loader', Assignment3.Loader);
     game.state.add('Story', Assignment3.Story);
     game.state.add('Level1', Assignment3.Level1);
     
-    game.state.start('Preloader');
+    game.state.start('Loader');
 };

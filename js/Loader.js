@@ -1,8 +1,8 @@
-Assignment3.Preloader=function(game) {
+Assignment3.Loader=function(game) {
     this.game=game;
     this.ready=false;
 };
-Assignment3.Preloader.prototype={
+Assignment3.Loader.prototype={
     preload: function() {
         this.load.image('garden', 'assets/garden.jpg');
         this.load.image('scroll', 'assets/scroll.jpg');
