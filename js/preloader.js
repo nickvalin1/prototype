@@ -24,7 +24,7 @@ Assignment3.Preloader.prototype={
     update: function() {
         //if (this.cache.isSoundDecoded('titleMusic') && this.ready == false) {
 			//this.ready = true;
-			this.state.start('Level1Story');
+			this.state.start('Story');
 		//}
     }
 }

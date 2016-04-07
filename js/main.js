@@ -13,7 +13,7 @@ window.onload = function() {
     
     var game = new Phaser.Game( 949, 640, Phaser.AUTO, 'game');
     game.state.add('Preloader', Assignment3.Preloader);
-    game.state.add('Level1Story', Assignment3.Level1Story);
+    game.state.add('Story', Assignment3.Story);
     game.state.add('Level1', Assignment3.Level1);
     
     game.state.start('Preloader');

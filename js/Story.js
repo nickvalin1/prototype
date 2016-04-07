@@ -1,4 +1,4 @@
-Assignment3.Level1Story=function(game){};
+Assignment3.Story=function(game){};
 var background;
 var scroll;
 var story;
@@ -6,7 +6,7 @@ var storyText;
 var continueButton;
 var i=0;
 var click1=false;
-Assignment3.Level1Story.prototype={
+Assignment3.Story.prototype={
     create: function() {
         background=this.add.sprite(-20,-20,'garden');
         background.scale.setTo(1.25,1.25);
