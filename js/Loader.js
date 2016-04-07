@@ -12,6 +12,7 @@ Assignment3.Loader.prototype={
         this.load.image('tileset', 'assets/tileset.png');
         this.load.image('general', 'assets/general.gif');
         this.load.image('knight', 'assets/knight.gif');
+        this.load.spritesheet('boss', 'assets/boss.gif', 39,55);
         this.load.spritesheet('princess', 'assets/princess.gif', 30, 58);
         this.load.spritesheet('dude', 'assets/dude.png', 32,32);
         this.load.image('blue', 'assets/blue.png');
