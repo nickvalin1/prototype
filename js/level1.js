@@ -20,6 +20,7 @@ var scrollText;
 var story1;
 var playText=true;
 var j=0;
+var continueButton1;
 
 class Unit {
     constructor(name, health, strength, defense, speed, move, sprite, tile, arrayPosition) {
@@ -78,10 +79,19 @@ Assignment3.Level1.prototype={
         var princess= new Unit("Rhea", 20, 5, 5, 10, 4, this.add.sprite(128, 96-25, 'princess'), map.getTileWorldXY(128,96), null);
         enemy1= new Unit("enemy1", 20, 20, 5, 5, 4, this.add.sprite(736, 512-5, 'enemy'), map.getTileWorldXY(736,512), 0);
         enemy2= new Unit("enemy2", 20, 20, 5, 5, 4, this.add.sprite(768, 512-5, 'enemy'), map.getTileWorldXY(768,512), 1);
+        enemy3= new Unit("enemy3", 20, 15, 5, 5, 4, this.add.sprite(640, 192-5, 'enemy'), map.getTileWorldXY(650,192), 2);
+        enemy4= new Unit("enemy4", 20, 15, 5, 5, 4, this.add.sprite(448, 256-5, 'enemy'), map.getTileWorldXY(448,256), 3);
+        enemy5= new Unit("enemy5", 20, 15, 5, 5, 4, this.add.sprite(480, 288-5, 'enemy'), map.getTileWorldXY(480,288), 4);
         enemy1.sprite.scale.setTo(1,.75);
         enemy2.sprite.scale.setTo(1,.75);
+        enemy3.sprite.scale.setTo(1,.75);
+        enemy4.sprite.scale.setTo(1,.75);
+        enemy5.sprite.scale.setTo(1,.75);
         enemyArray[0]=enemy1;
         enemyArray[1]=enemy2;
+        enemyArray[2]=enemy3;
+        enemyArray[3]=enemy4;
+        enemyArray[4]=enemy5;
         
         movementSelect=this.add.group();
         movementSelect.alpha=.1;
@@ -98,20 +108,22 @@ Assignment3.Level1.prototype={
         
         story1=["These guards... they've been slaughtered...", "Hey! There's another one, get him!", "Well, it looks like I'll be fighting my way to the Princess.", "Who could these men be..."];
         
-        scrollText=this.add.text(145, 580, story1[j]);
+        scrollText=this.add.text(145, 590, story1[j]);
+        
+        continueButton1=this.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
     },
     update: function() {
         if (playText) {
-            if (continueButton.isDown && j<story1.length && !click) {
+            if (continueButton1.isDown && j<story1.length && !click) {
                 click=true;
             }
-            else if (click && continueButton.isUp) {
+            else if (click && continueButton1.isUp) {
                 j++;
                 scrollText.text=story1[j];
                 click=false;
             }
-            if (continueButton.isDown && i>=story1.length-1) {
-                scroll.visible=false;
+            if (continueButton1.isDown && j>=story1.length-1) {
+                scroll1.visible=false;
                 scrollText.visible=false;
                 click=false;
                 playText=false;
