@@ -4,6 +4,14 @@ var layer; //layer
 var player; //player unit
 var enemy1; //enemy unit
 var enemy2;
+var enemy3;
+var enemy4;
+var enemy5;
+var enemy6;
+var enemy7;
+var enemy8;
+var enemy9;
+var boss;
 var click=false;//first click
 var click2=false;//second click
 var currentTile;//tile
@@ -274,10 +282,10 @@ function displayOptionMenu() {
     }
 }
 function attackable() {
-    for (var ind=0; i<enemyArray.length; ind++) {
-        if (enemyArray[ind]!=null) {
-            if ((player.tile.x==enemyArray[ind].tile.x && Math.abs(player.tile.y-enemyArray[ind].tile.y)==1) || (player.tile.y==enemyArray[ind].tile.y && Math.abs(player.tile.x-enemyArray[ind].tile.x)==1)) {
-                toAttack=enemyArray[ind];
+    for (var i=0; i<enemyArray.length; i++) {
+        if (enemyArray[i]!=null && enemyArray[i].tile!=null) {
+            if ((player.tile.x==enemyArray[i].tile.x && Math.abs(player.tile.y-enemyArray[i].tile.y)==1) || (player.tile.y==enemyArray[i].tile.y && Math.abs(player.tile.x-enemyArray[i].tile.x)==1)) {
+                toAttack=enemyArray[i];
                 return true;
             }
         }
